@@ -1,6 +1,6 @@
 <?php
-//ini_set('error_reporting', E_ALL); // mesmo resultado de: error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL); // mesmo resultado de: error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 $nome = $_GET['nome'];
 $precoEmReais = $_GET['precoEmReais'];
@@ -28,8 +28,5 @@ $resultado = 'O produto ' . $nome . ' custa R$' . $precoEmReais . ' com desconto
 
 
 echo $resultado;
-
-
-
 
 ?>
