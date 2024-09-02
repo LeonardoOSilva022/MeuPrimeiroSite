@@ -1,4 +1,32 @@
-<?php ?>
+<?php
+
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+
+$host = '127.0.0.1';
+$user = 'root';
+$password = '';
+$database = 'fullstack';
+
+$id = $_GET['id'];
+
+$conn = new mysqli($host, $user, $password, $database);
+
+if ($conn->connect_error) {
+    die( " Conexão falhou: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM `caixaRegistradora` where id = $id";
+
+
+$resultado = $conn->query($sql);
+
+if ($resultado->num_rows > 0) {
+    $row = $resultado->fetch_assoc(); 
+}
+$conn->close();
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -85,18 +113,20 @@
 
 <body>
     <main>
-    <form method="GET" action="inserirBancoDeDados.php">
+    <label for="nome">Editando o produto: #<?php echo $row['id']?></label>
+
+        <form method="GET" action="atualizarBancoDeDados.php">
+            <input type="hidden" name="id" value="<?php echo $row['id']?>">
             <label for="nome">Nome do produto:</label>
-            <input type="text" id="nome" name="nome">
+            <input type="text" id="nome" name="nome" value="<?php echo $row['nome']?>">
 
             <label for="precoEmReais">Preço em reais:</label>
-            <input type="number" id="precoEmReais" name="precoEmReais">
+            <input type="number" id="precoEmReais" name="precoEmReais" value="<?php echo $row['preco']?>">
 
             <div class="resultado" id="mensagemDeResultado"></div>
             <div class="erro" id="mensagemDeErro"></div>
 
-
-            <input type="submit" value="Registrar">
+            <input type="submit" value="Atualizar">
         </form>
 
     </main>
