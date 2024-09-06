@@ -1,3 +1,10 @@
+<?php
+$msg = '';
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -74,12 +81,14 @@
 <body>
 
 <div class="forgot-password-container">
+    <h2><?php echo $msg;?></h2>
     <h2>Esqueci Minha Senha</h2>
-    <form action="#" method="POST">
+    <form action="usuarios/esqueciMinhaSenha.php" method="GET">
         <input type="email" name="email" placeholder="Email" required>
         <input type="text" name="palavraDeSeguranca" placeholder="Palavra de Segurança" required>
+        <input type="text" name="novaSenha" placeholder= "Nova Senha"required>
         <button type="submit">Recuperar Senha</button>
-        <a href="#" class="link">Voltar ao Login</a>
+        <a href="login.php" class="link">Voltar ao Login</a>
     </form>
 </div>
 
