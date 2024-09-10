@@ -1,22 +1,11 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
+
+require "../../conexao.php";
 
 $nome = $_GET['nome'];
 $email = $_GET['email'];
 $senha = $_GET['senha'];
 $palavraDeSeguranca = $_GET['palavraDeSeguranca'];
-
-$host = '127.0.0.1';
-$user = 'root';
-$password = '';
-$database = 'fullstack';
-
-$conn = new mysqli($host, $user, $password, $database);
-
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
 
 $sql = "SELECT * FROM `usuarios` where `status` = 'ativo' and email = '$email' limit 1";
 

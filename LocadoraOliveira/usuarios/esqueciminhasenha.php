@@ -1,10 +1,19 @@
+<?php
+
+$msg = '';
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Esqueci Minha Senha</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +25,7 @@
             margin: 0;
         }
 
-        .login-container {
+        .forgot-password-container {
             background: white;
             padding: 30px;
             border-radius: 10px;
@@ -26,13 +35,13 @@
             text-align: center;
         }
 
-        .login-container h2 {
+        .forgot-password-container h2 {
             margin-bottom: 20px;
             color: #333;
         }
 
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
+        .forgot-password-container input[type="email"],
+        .forgot-password-container input[type="text"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
@@ -41,11 +50,11 @@
             font-size: 16px;
         }
 
-        .login-container button {
+        .forgot-password-container button {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
-            background-color: #6e8efb;
+            background-color: #7b4fb2;
             border: none;
             border-radius: 5px;
             color: white;
@@ -54,11 +63,11 @@
             transition: background-color 0.3s;
         }
 
-        .login-container button:hover {
-            background-color: #5a7bdb;
+        .forgot-password-container button:hover {
+            background-color: #6b429e;
         }
 
-        .login-container .link {
+        .forgot-password-container .link {
             display: block;
             margin: 10px 0;
             color: #6e8efb;
@@ -66,39 +75,26 @@
             font-size: 14px;
         }
 
-        .login-container .link:hover {
+        .forgot-password-container .link:hover {
             text-decoration: underline;
-        }
-
-        .login-container .register-btn {
-            background-color: #7b4fb2; /* Cor ajustada para maior contraste */
-            color: white; /* Cor do texto ajustada para melhor legibilidade */
-            padding: 10px;
-            margin-top: 10px;
-            display: inline-block;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .login-container .register-btn:hover {
-            background-color: #6b429e; /* Efeito de hover para o botão */
         }
     </style>
 </head>
+
 <body>
 
-<div class="login-container">
-    <h2>Login</h2>
-    <form action="usuarios/logar.php" method="GET">
-        <input type="text" name="email" placeholder="Usuário" required>
-        <input type="password" name="senha" placeholder="Senha" required>
-        <button type="submit">Logar</button>
-        <a href="esqueciminhasenha.php" class="link">Esqueci minha senha</a>
-        <a href="cadastro.php" class="register-btn">Cadastre-se</a>
-    </form>
-</div>
+    <div class="forgot-password-container">
+        <h2><?php echo $msg; ?></h2>
+        <h2>Esqueci Minha Senha</h2>
+        <form action="acoes/esqueciminhasenha.php" method="GET">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="palavraDeSeguranca" placeholder="Palavra de Segurança" required>
+            <input type="text" name="novaSenha" placeholder="Nova Senha" required>
+            <button type="submit">Recuperar Senha</button>
+            <a href="login.php" class="link">Voltar ao Login</a>
+        </form>
+    </div>
 
 </body>
+
 </html>
