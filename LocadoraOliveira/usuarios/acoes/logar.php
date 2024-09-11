@@ -21,7 +21,7 @@ if ($resultado->num_rows > 0) {
     $_SESSION["userName"] = $row["nome"];
     $resultado = $conn->query($sql);
 
-    header("Location:../dashboard.php");
+    header("Location:../../dashboard.php");
 } else {
     echo "Usuário não encontrado :( ";
 }
