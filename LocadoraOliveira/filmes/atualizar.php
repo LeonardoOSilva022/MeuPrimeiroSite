@@ -1,18 +1,19 @@
 <?php
 
 session_start();
-if(isset($_SESSION['userId']) && $_SESSION['userId'] != ''){
+if (isset($_SESSION['userId']) && $_SESSION['userId'] != '') {
     header('Location:dashboard.php');
 }
 $msg = '';
-if(isset($_GET['msg'])){
-$msg = $_GET['msg'];
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,8 +85,10 @@ $msg = $_GET['msg'];
         }
 
         .login-container .register-btn {
-            background-color: #7b4fb2; /* Cor ajustada para maior contraste */
-            color: white; /* Cor do texto ajustada para melhor legibilidade */
+            background-color: #7b4fb2;
+            /* Cor ajustada para maior contraste */
+            color: white;
+            /* Cor do texto ajustada para melhor legibilidade */
             padding: 10px;
             margin-top: 10px;
             display: inline-block;
@@ -96,23 +99,28 @@ $msg = $_GET['msg'];
         }
 
         .login-container .register-btn:hover {
-            background-color: #6b429e; /* Efeito de hover para o botão */
+            background-color: #6b429e;
+            /* Efeito de hover para o botão */
         }
     </style>
 </head>
+
 <body>
 
-<div class="login-container">
-    <h2><?php echo $msg;?></h2>
-    <h2>Login</h2>
-    <form action="usuarios/logar.php" method="GET">
-        <input type="text" name="email" placeholder="Usuário" required>
-        <input type="password" name="senha" placeholder="Senha" required>
-        <button type="submit">Logar</button>
-        <a href="esqueciminhasenha.php" class="link">Esqueci minha senha</a>
-        <a href="cadastro.php" class="register-btn">Cadastre-se</a>
-    </form>
-</div>
+    <?php require "../menu.php"; ?>
+
+    <div class="login-container">
+        <h2><?php echo $msg; ?></h2>
+        <h2>Login</h2>
+        <form action="usuarios/logar.php" method="GET">
+            <input type="text" name="email" placeholder="Usuário" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button type="submit">Logar</button>
+            <a href="esqueciminhasenha.php" class="link">Esqueci minha senha</a>
+            <a href="cadastro.php" class="register-btn">Cadastre-se</a>
+        </form>
+    </div>
 
 </body>
+
 </html>

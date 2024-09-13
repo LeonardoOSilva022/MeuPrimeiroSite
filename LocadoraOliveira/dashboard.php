@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!isset($_SESSION['userId']) || $_SESSION['userId'] == ''){
+if (!isset($_SESSION['userId']) || $_SESSION['userId'] == '') {
     header('Location:usuarios/login.php?msg=Você não está autenticado');
 
 }
@@ -12,6 +12,7 @@ if(!isset($_SESSION['userId']) || $_SESSION['userId'] == ''){
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -110,25 +111,14 @@ if(!isset($_SESSION['userId']) || $_SESSION['userId'] == ''){
         }
     </style>
 </head>
+
 <body>
 
-    <div class="sidebar">
-        <h2>Locadora</h2>
-        <ul>
-            <li><a href="filmes/criar.php">Adicionar Filme</a></li>
-            <li><a href="filmes/listar.php">Listar Filmes</a></li>
-            <li><a href="usuarios/logout.php">Sair</a></li>
-
-            <!-- <li><a href="#">Adicionar Cliente</a></li>
-            <li><a href="#">Listar Clientes</a></li>
-            <li><a href="#">Atualizar Cliente</a></li>
-            <li><a href="#">Remover Cliente</a></li> -->
-        </ul>
-    </div>
+    <?php require "menu.php"; ?>
 
     <div class="main-content">
         <h1>Bem-vindo à Dashboard da Locadora</h1>
-        
+
         <div class="widget">
             <h3>Últimos Filmes Adicionados</h3>
             <p>Mostre aqui uma lista dos filmes recentemente adicionados...</p>
@@ -146,4 +136,5 @@ if(!isset($_SESSION['userId']) || $_SESSION['userId'] == ''){
     </div>
 
 </body>
+
 </html>
