@@ -1,7 +1,7 @@
 <?php
 require "../conexao.php";
 
-$sql = "SELECT * FROM `filmes`";
+$sql = "SELECT * FROM `filmes` where deleted_by is null";
 
 $resultado = $conn->query($sql);
 
@@ -184,8 +184,8 @@ $conn->close();
                         <td><?php echo $diretor ?></td>
                         <td><?php echo $row["classificacao"] ?></td>
                         <td>
-                            <a href="atualizar.php?id=<?php echo $row['id']; ?>"></a>Editar</a>
-                            <a href="deletar.php?id=<?php echo $row['id']; ?>" style="color: red;"></a>Excluir</a>
+                            <a href="atualizar.php?id=<?php echo $row['id']; ?>">Editar</a>
+                            <a href="deletar.php?id=<?php echo $row['id']; ?>" style="color: red;">Excluir</a>
                         </td>
                     </tr>
                     <?php
